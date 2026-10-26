@@ -13,3 +13,5 @@ six==1.17.0
 typing_extensions==4.16.0
 tzdata==2026.5
 urllib3==2.8.0
+paho-mqtt>=2.0
+python-dotenv==1.2.3
