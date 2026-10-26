@@ -1,10 +1,7 @@
 import sys
 from pathlib import Path
 
-# Find the project's root directory.
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-
-# Tell Python where handler.py and validators.py are located.
 CONSUMER_DIR = PROJECT_ROOT / "lambda" / "consumer"
 sys.path.insert(0, str(CONSUMER_DIR))
 
@@ -30,6 +27,7 @@ def test_valid_message_is_processed():
                     "lat": 36.8065,
                     "lon": 10.1815,
                     "speed_kmh": 72,
+                    "battery_pct": 85,
                     "ts": 1793034000000,
                 },
             )

@@ -2,3 +2,5 @@
 .env
 terraform.tfvars
 .terraform
+__pycache__
+.pytest_cache
