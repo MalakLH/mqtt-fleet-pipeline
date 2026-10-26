@@ -1,0 +1,2 @@
+alert_email = "your-email@example.com"
+pandas_layer_arn = "example of pandas layer"

@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import json, os, random, time
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
 LOCAL = os.getenv("LOCAL") == "1"
