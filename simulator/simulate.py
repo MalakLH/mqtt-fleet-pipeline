@@ -1,6 +1,9 @@
-import paho.mqtt.client as mqtt
-import json, os, random, time
+import json
+import os
+import random
+import time
 
+import paho.mqtt.client as mqtt
 from dotenv import load_dotenv
 
 load_dotenv()
