@@ -43,5 +43,11 @@ jobs:
 
       - name: Run test
         shell: bash
+        env:
+          AWS_DEFAULT_REGION: eu-north-1
+          AWS_ACCESS_KEY_ID: testing
+          AWS_SECRET_ACCESS_KEY: testing
+          TABLE: test-vehicle-state
+          BUCKET: test-bucket
         run: PYTHONPATH=lambda/consumer pytest -q
 
