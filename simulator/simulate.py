@@ -14,7 +14,11 @@ c = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id="fleet-simulator")
 if LOCAL:
     c.connect("localhost", 1883)
 else:
-    c.tls_set(ca_certs="certs/AmazonRootCA1.pem", certfile="certs/cert.pem", keyfile="certs/private.key")
+    c.tls_set(
+    ca_certs="certs/AmazonRootCA1.pem",
+    certfile="certs/device.pem.crt",
+    keyfile="certs/private.pem.key"
+)
     c.connect(os.environ["IOT_ENDPOINT"], 8883, keepalive=60)
 c.loop_start()
 
