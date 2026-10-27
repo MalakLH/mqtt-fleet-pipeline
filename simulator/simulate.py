@@ -11,9 +11,9 @@ load_dotenv()
 print("DEBUG LOCAL =", repr(os.getenv("LOCAL")))
 
 LOCAL = os.getenv("LOCAL") == "1"
-N = int(os.getenv("VEHICLES", 20))
-EVERY = float(os.getenv("INTERVAL", 2))
-MAX = int(os.getenv("MAX_MESSAGES", 20000))  # hard cap protects the free tier
+N = int(os.getenv("VEHICLES", "20"))
+EVERY = float(os.getenv("INTERVAL", "2"))
+MAX = int(os.getenv("MAX_MESSAGES", "20000"))  # hard cap protects the free tier
 
 c = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id="fleet-simulator")
 
@@ -45,7 +45,7 @@ while sent < MAX:
         s["bat"] = max(0, s["bat"] - random.uniform(0, .05))
         p = {"ts": int(time.time() * 1000), "lat": round(s["lat"], 5), "lon": round(s["lon"], 5),
              "speed_kmh": round(max(0, random.gauss(45, 20)), 1), "battery_pct": round(s["bat"], 1)}
-        if random.random() < float(os.getenv("FAULT_RATE", 0.01)):
+        if random.random() < float(os.getenv("FAULT_RATE", "0.01")):
             p.pop("lat")  # fault injection -> exercises the DLQ path
         c.publish(f"fleet/{vid}/telemetry", json.dumps(p), qos=1)
         sent += 1
