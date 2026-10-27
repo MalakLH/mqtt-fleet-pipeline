@@ -29,7 +29,7 @@ def handler(event, context):
             e["_mid"] = r["messageId"]
             good.append(e)
 
-        except Exception as ex:
+        except (KeyError, TypeError, ValueError) as ex:
 
             log.warning("invalid record %s: %s", r["messageId"], ex)
             failed.append({"itemIdentifier": r["messageId"]})
