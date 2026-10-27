@@ -1,8 +1,12 @@
-import json, os, time, logging
+import json
+import logging
+import os
+import time
 from decimal import Decimal
+
+import awswrangler as wr
 import boto3
 import pandas as pd
-import awswrangler as wr
 from validators import validate
 
 log = logging.getLogger(); log.setLevel(logging.INFO)
