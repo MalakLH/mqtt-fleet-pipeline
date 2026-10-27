@@ -1,3 +1,4 @@
+
 resource "aws_iam_role" "lambda" {
   name = "fleet-consumer-role"
   assume_role_policy = jsonencode({

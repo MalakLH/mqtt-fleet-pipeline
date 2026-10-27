@@ -1,3 +1,4 @@
+
 variable "aws_region" {
   description = "AWS region for the fleet pipeline"
   type        = string

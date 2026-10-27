@@ -1,3 +1,4 @@
+
 resource "aws_iot_thing" "sim" { name = "fleet-simulator" }
 
 resource "aws_iot_certificate" "cert" { active = true }

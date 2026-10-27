@@ -4,3 +4,6 @@ terraform.tfvars
 .terraform
 __pycache__
 .pytest_cache
+terraform.tfstate
+consumer.zip
+certs

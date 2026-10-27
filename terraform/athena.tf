@@ -1,3 +1,4 @@
+
 resource "aws_athena_workgroup" "wg" {
   name          = "fleet"
   force_destroy = true
