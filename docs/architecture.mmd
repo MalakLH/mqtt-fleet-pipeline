@@ -1,0 +1,11 @@
+flowchart LR
+    SIM[Python fleet simulator] -->|MQTT over TLS| IOT[AWS IoT Core]
+    IOT -->|IoT topic rule| SQS[SQS ingest queue]
+    SQS -->|Event source mapping| L[Lambda consumer]
+    L --> DDB[(DynamoDB vehicle state)]
+    L --> S3[(S3 telemetry data)]
+    S3 --> ATH[Athena SQL analytics]
+    SQS -. backlog metrics .-> CW[CloudWatch alarms and logs]
+    L -. execution logs .-> CW
+    CW --> SNS[SNS email notifications]
+    SQS --> DLQ[SQS dead-letter queue]
