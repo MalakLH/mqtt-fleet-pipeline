@@ -5,21 +5,29 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+print("DEBUG LOCAL =", repr(os.getenv("LOCAL")))
+
 LOCAL = os.getenv("LOCAL") == "1"
 N = int(os.getenv("VEHICLES", 20))
 EVERY = float(os.getenv("INTERVAL", 2))
 MAX = int(os.getenv("MAX_MESSAGES", 20000))  # hard cap protects the free tier
 
 c = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id="fleet-simulator")
+
 if LOCAL:
+    print("Connecting to local MQTT broker...")
     c.connect("localhost", 1883)
+
 else:
+    print("Connecting to AWS IoT Core...")
     c.tls_set(
     ca_certs="certs/AmazonRootCA1.pem",
     certfile="certs/device.pem.crt",
     keyfile="certs/private.pem.key"
 )
+    
     c.connect(os.environ["IOT_ENDPOINT"], 8883, keepalive=60)
+    
 c.loop_start()
 
 cars = {f"car-{i:03d}": {"lat": 40.71 + random.uniform(-.05, .05),
