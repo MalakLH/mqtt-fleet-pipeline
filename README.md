@@ -5,7 +5,6 @@
 
 An infrastructure-as-code project that simulates vehicle telemetry over MQTT and processes it through an AWS serverless pipeline, with operational monitoring and SQL analytics.
 
-> **Status:** The pipeline and Athena queries have been tested by the author. Performance figures and experiment results are intentionally left blank until measured and recorded.
 
 ## Architecture
 
